@@ -14,3 +14,4 @@ export default function Home() {
           <h3 className="mt-2 font-semibold">{m.label}</h3><p className="mt-1 text-sm text-steel">{m.desc}</p></Link>))}
     {isAdmin && <Link to="/app/admin" className="card border-gold/60 hover:border-gold"><span className="text-2xl text-gold">⚙</span><h3 className="mt-2 font-semibold">Administración</h3><p className="mt-1 text-sm text-steel">Recargas, negocios, reportes y créditos</p></Link>}
     </div></div>)
+}
