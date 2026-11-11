@@ -10,7 +10,7 @@ export default function Home() {
       {modules.filter(m => m.path !== '/app').map(m => (
         <Link key={m.path} to={m.path} className="card hover:border-gold/60">
           <div className="flex items-center justify-between"><span className="text-2xl text-gold">{m.icon}</span>
-            <span className="text-[10px] uppercase tracking-widest text-steel">{m.stage === 1 ? 'Disponible' : `Etapa ${m.stage}`}</span></div>
+            <span className="text-[10px] uppercase tracking-widest text-steel">{m.built ? 'Disponible' : `Día ${m.unlockDay}`}</span></div>
           <h3 className="mt-2 font-semibold">{m.label}</h3><p className="mt-1 text-sm text-steel">{m.desc}</p></Link>))}
     </div></div>)
 }

@@ -18,8 +18,7 @@ export default function Directory() {
   }
   return (<div className="mx-auto max-w-3xl"><h1 className="font-display text-3xl">Servicios</h1>
     <div className="mt-4 flex flex-wrap gap-2"><select className="input w-auto" value={cat} onChange={e => setCat(e.target.value)}><option value="">Todas las categorías</option>{cats.map(c => <option key={c}>{c}</option>)}</select>
-      <button onClick={locate} className="btn-ghost">{pos ? "Ordenado por cercanía" : "Cerca de mí"}</button>
-      <a className="btn-ghost" target="_blank" rel="noreferrer" href="https://www.google.com/maps/search/?api=1&query=veterinarias%20cerca%20de%20mi">Ver en Google Maps</a></div>
+      <button onClick={locate} className="btn-ghost">{pos ? "Ordenado por cercanía" : "Cerca de mí"}</button></div>
     {msg && <p className="mt-3 text-sm text-gold">{msg}</p>}
     <div className="mt-5 space-y-3">{shown.length === 0 && <p className="card text-sm text-steel">Aún no hay negocios en esta categoría. Registra el tuyo abajo o espera la carga de negocios verificados de Pasto.</p>}
       {shown.map(b => <div key={b.id} className="card"><div className="flex justify-between gap-2"><h3 className="font-semibold">{b.name}</h3>
