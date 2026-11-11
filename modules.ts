@@ -10,8 +10,8 @@ export const modules: Mod[] = [
   { path: "/app/diario", label: "Diario inteligente", icon: "✎", desc: "Alimentación, paseos y ánimo", stage: 2, unlockDay: 7, built: true },
   { path: "/app/vet-ia", label: "KAI Vet IA", icon: "✦", desc: "Asistente; no sustituye al veterinario", stage: 3, unlockDay: 14, built: true },
   { path: "/app/nutrition", label: "KAI Nutrition", icon: "❦", desc: "Alimentación según especie", stage: 3, unlockDay: 21, built: true },
-  { path: "/app/community", label: "KAI Community", icon: "☷", desc: "Red social de mascotas", stage: 4, unlockDay: 30 },
-  { path: "/app/market", label: "KAI Market", icon: "◈", desc: "Catálogo y contacto con vendedores", stage: 4, unlockDay: 40 },
-  { path: "/app/adopcion", label: "Adopción y perdidas", icon: "♡", desc: "Adopciones y mascotas perdidas", stage: 4, unlockDay: 40 },
-  { path: "/app/academy", label: "KAI Academy", icon: "✐", desc: "Cursos y primeros auxilios", stage: 4, unlockDay: 50 },
+  { path: "/app/community", label: "KAI Community", icon: "☷", desc: "Red social de mascotas", stage: 4, unlockDay: 30, built: true },
+  { path: "/app/market", label: "KAI Market", icon: "◈", desc: "Catálogo y contacto con vendedores", stage: 4, unlockDay: 40, built: true },
+  { path: "/app/adopcion", label: "Adopción y perdidas", icon: "♡", desc: "Adopciones y mascotas perdidas", stage: 4, unlockDay: 40, built: true },
+  { path: "/app/academy", label: "KAI Academy", icon: "✐", desc: "Cursos y primeros auxilios", stage: 4, unlockDay: 50, built: true },
 ]

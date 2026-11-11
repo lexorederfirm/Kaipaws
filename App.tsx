@@ -13,9 +13,14 @@ import Health from "./Health"
 import Diary from "./Diary"
 import Nutrition from "./Nutrition"
 import VetIA from "./VetIA"
+import Board from "./Board"
+import Academy from "./Academy"
+const Community = () => <Board title="KAI Community" kinds={["comunidad"]} social />
+const Market = () => <Board title="KAI Market" kinds={["producto"]} price contact />
+const Adoption = () => <Board title="Adopción y perdidas" kinds={["adopcion", "encontrada", "perdida"]} contact location />
 import { modules, Mod } from "./modules"
 import { useAuth } from "./auth"
-const pages: Record<string, () => JSX.Element> = { "/app/mascotas": Pets, "/app/wallet": Wallet, "/app/services": Directory, "/app/health": Health, "/app/diario": Diary, "/app/nutrition": Nutrition, "/app/vet-ia": VetIA }
+const pages: Record<string, () => JSX.Element> = { "/app/mascotas": Pets, "/app/wallet": Wallet, "/app/services": Directory, "/app/health": Health, "/app/diario": Diary, "/app/nutrition": Nutrition, "/app/vet-ia": VetIA, "/app/community": Community, "/app/market": Market, "/app/adopcion": Adoption, "/app/academy": Academy }
 function Gate({ mod }: { mod: Mod }) {
   const { days, isAdmin } = useAuth()
   if (!isAdmin && days < mod.unlockDay) return (

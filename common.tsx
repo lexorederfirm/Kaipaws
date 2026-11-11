@@ -9,3 +9,4 @@ export function usePets() {
   return { pets, pet, picker }
 }
 export const today = () => new Date().toISOString().slice(0, 10)
+export const wa = (n: string) => { const d = n.replace(/\D/g, ""); return "https://wa.me/" + (d.length === 10 ? "57" + d : d) }
