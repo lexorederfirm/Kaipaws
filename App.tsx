@@ -1,13 +1,30 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
-import Landing from './Landing'
-import AuthPage from './AuthPage'
-import Shell from './Shell'
-import Home from './Home'
-import Profile from './Profile'
-import ComingSoon from './ComingSoon'
-import { modules } from './modules'
-import { useAuth } from './auth'
-
+import { Routes, Route, Navigate } from "react-router-dom"
+import Landing from "./Landing"
+import AuthPage from "./AuthPage"
+import Shell from "./Shell"
+import Home from "./Home"
+import Profile from "./Profile"
+import ComingSoon from "./ComingSoon"
+import Pets from "./Pets"
+import Wallet from "./Wallet"
+import Directory from "./Directory"
+import Admin from "./Admin"
+import Health from "./Health"
+import Diary from "./Diary"
+import Nutrition from "./Nutrition"
+import VetIA from "./VetIA"
+import { modules, Mod } from "./modules"
+import { useAuth } from "./auth"
+const pages: Record<string, () => JSX.Element> = { "/app/mascotas": Pets, "/app/wallet": Wallet, "/app/services": Directory, "/app/health": Health, "/app/diario": Diary, "/app/nutrition": Nutrition, "/app/vet-ia": VetIA }
+function Gate({ mod }: { mod: Mod }) {
+  const { days, isAdmin } = useAuth()
+  if (!isAdmin && days < mod.unlockDay) return (
+    <div className="mx-auto max-w-xl text-center"><div className="text-5xl text-gold">{mod.icon}</div>
+      <h1 className="mt-3 font-display text-3xl">{mod.label}</h1>
+      <p className="card mt-6 text-sm">Se abre el día {mod.unlockDay} de tu prueba gratis. Faltan <b className="text-gold">{mod.unlockDay - days}</b> días.</p></div>)
+  const Page = pages[mod.path]
+  return Page ? <Page /> : <ComingSoon mod={mod} />
+}
 function Protected({ children }: { children: JSX.Element }) {
   const { user, loading } = useAuth()
   if (loading) return <p className="p-10 text-steel">Cargando…</p>
@@ -23,8 +40,9 @@ export default function App() {
       <Route path="/app" element={<Protected><Shell /></Protected>}>
         <Route index element={<Home />} />
         <Route path="perfil" element={<Profile />} />
-        {modules.filter(m => m.stage > 1).map(m =>
-          <Route key={m.path} path={m.path.replace('/app/', '')} element={<ComingSoon mod={m} />} />)}
+        <Route path="admin" element={<Admin />} />
+        {modules.filter(m => m.path !== "/app" && m.path !== "/app/perfil").map(m =>
+          <Route key={m.path} path={m.path.replace("/app/", "")} element={<Gate mod={m} />} />)}
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
